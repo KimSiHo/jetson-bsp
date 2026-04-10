@@ -1,0 +1,3 @@
+[submodule "deepstream/apps/deepstream-proximity-record-app/protocol"]
+	path = deepstream/apps/deepstream-proximity-record-app/protocol
+	url = git@github.com:KimSiHo/protocol.git

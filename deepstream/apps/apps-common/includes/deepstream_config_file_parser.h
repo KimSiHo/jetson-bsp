@@ -1,0 +1,123 @@
+#ifndef __NVGSTDS_CONFIG_PARSER_H__
+#define __NVGSTDS_CONFIG_PARSER_H__
+
+#include <gst/gst.h>
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "deepstream_config.h"
+#include "deepstream_dsexample.h"
+#include "deepstream_gie.h"
+#include "deepstream_image_save.h"
+#include "deepstream_osd.h"
+#include "deepstream_preprocess.h"
+#include "deepstream_primary_gie.h"
+#include "deepstream_sinks.h"
+#include "deepstream_sources.h"
+#include "deepstream_streammux.h"
+#include "deepstream_tiled_display.h"
+#include "deepstream_tracker.h"
+
+#define CONFIG_GROUP_SOURCE_LIST "source-list"
+#define CONFIG_GROUP_SOURCE_LIST_NUM_SOURCE_BINS "num-source-bins"
+#define CONFIG_GROUP_SOURCE_LIST_URI_LIST "list"
+/** this vector is one to one mapped with the uri-list/list */
+#define CONFIG_GROUP_SOURCE_LIST_SENSOR_ID_LIST "sensor-id-list"
+#define CONFIG_GROUP_SOURCE_LIST_SENSOR_NAME_LIST "sensor-name-list"
+
+/** additional configs to support nvmultiurisrcbin usage */
+#define CONFIG_GROUP_SOURCE_LIST_USE_NVMULTIURISRCBIN "use-nvmultiurisrcbin"
+#define CONFIG_GROUP_SOURCE_LIST_STREAM_NAME_DISPLAY "stream-name-display"
+#define CONFIG_GROUP_SOURCE_LIST_MAX_BATCH_SIZE "max-batch-size"
+#define CONFIG_GROUP_SOURCE_LIST_HTTP_IP "http-ip"
+#define CONFIG_GROUP_SOURCE_LIST_HTTP_PORT "http-port"
+#define CONFIG_GROUP_SOURCE_EXTRACT_SEI_TYPE5_DATA "extract-sei-type5-data"
+#define CONFIG_GROUP_SOURCE_SEI_UUID "sei-uuid"
+#define CONFIG_GROUP_SOURCE_LIST_LOW_LATENCY_MODE "low-latency-mode"
+
+#define CONFIG_GROUP_SOURCE_ALL "source-attr-all"
+
+#define CONFIG_GROUP_SOURCE "source"
+#define CONFIG_GROUP_OSD "osd"
+#define CONFIG_GROUP_PREPROCESS "pre-process"
+#define CONFIG_GROUP_SECONDARY_PREPROCESS "secondary-pre-process"
+#define CONFIG_GROUP_PRIMARY_GIE "primary-gie"
+#define CONFIG_GROUP_SECONDARY_GIE "secondary-gie"
+#define CONFIG_GROUP_TRACKER "tracker"
+#define CONFIG_GROUP_SINK "sink"
+#define CONFIG_GROUP_TILED_DISPLAY "tiled-display"
+#define CONFIG_GROUP_DSEXAMPLE "ds-example"
+#define CONFIG_GROUP_STREAMMUX "streammux"
+#define CONFIG_GROUP_MSG_CONVERTER "message-converter"
+#define CONFIG_GROUP_IMG_SAVE "img-save"
+#define CONFIG_GROUP_AUDIO_TRANSFORM "audio-transform"
+
+#define CONFIG_GROUP_SOURCE_GPU_ID "gpu-id"
+#define CONFIG_GROUP_SOURCE_TYPE "type"
+#define CONFIG_GROUP_SOURCE_CUDA_MEM_TYPE "nvbuf-memory-type"
+#define CONFIG_GROUP_SOURCE_CAMERA_WIDTH "camera-width"
+#define CONFIG_GROUP_SOURCE_CAMERA_HEIGHT "camera-height"
+#define CONFIG_GROUP_SOURCE_CAMERA_FPS_N "camera-fps-n"
+#define CONFIG_GROUP_SOURCE_CAMERA_FPS_D "camera-fps-d"
+#define CONFIG_GROUP_SOURCE_CAMERA_CSI_SID "camera-csi-sensor-id"
+#define CONFIG_GROUP_SOURCE_CAMERA_V4L2_DEVNODE "camera-v4l2-dev-node"
+#define CONFIG_GROUP_SOURCE_URI "uri"
+#define CONFIG_GROUP_SOURCE_LIVE_SOURCE "live-source"
+#define CONFIG_GROUP_SOURCE_FILE_LOOP "file-loop"
+#define CONFIG_GROUP_SOURCE_LATENCY "latency"
+#define CONFIG_GROUP_SOURCE_NUM_SOURCES "num-sources"
+#define CONFIG_GROUP_SOURCE_INTRA_DECODE "intra-decode-enable"
+#define CONFIG_GROUP_SOURCE_DEC_SKIP_FRAMES "dec-skip-frames"
+#define CONFIG_GROUP_SOURCE_NUM_DECODE_SURFACES "num-decode-surfaces"
+#define CONFIG_GROUP_SOURCE_NUM_EXTRA_SURFACES "num-extra-surfaces"
+#define CONFIG_GROUP_SOURCE_DROP_FRAME_INTERVAL "drop-frame-interval"
+#define CONFIG_GROUP_SOURCE_CAMERA_ID "camera-id"
+#define CONFIG_GROUP_SOURCE_ID "source-id"
+#define CONFIG_GROUP_SOURCE_SELECT_RTP_PROTOCOL "select-rtp-protocol"
+#define CONFIG_GROUP_SOURCE_RTSP_RECONNECT_INTERVAL_SEC "rtsp-reconnect-interval-sec"
+#define CONFIG_GROUP_SOURCE_RTSP_RECONNECT_ATTEMPTS "rtsp-reconnect-attempts"
+#define CONFIG_GROUP_SOURCE_SMART_RECORD_ENABLE "smart-record"
+#define CONFIG_GROUP_SOURCE_SMART_RECORD_DIRPATH "smart-rec-dir-path"
+#define CONFIG_GROUP_SOURCE_SMART_RECORD_FILE_PREFIX "smart-rec-file-prefix"
+#define CONFIG_GROUP_SOURCE_SMART_RECORD_CACHE_SIZE_LEGACY "smart-rec-video-cache"
+#define CONFIG_GROUP_SOURCE_SMART_RECORD_CACHE_SIZE "smart-rec-cache"
+#define CONFIG_GROUP_SOURCE_SMART_RECORD_CONTAINER "smart-rec-container"
+#define CONFIG_GROUP_SOURCE_SMART_RECORD_START_TIME "smart-rec-start-time"
+#define CONFIG_GROUP_SOURCE_SMART_RECORD_DEFAULT_DURATION "smart-rec-default-duration"
+#define CONFIG_GROUP_SOURCE_SMART_RECORD_DURATION "smart-rec-duration"
+#define CONFIG_GROUP_SOURCE_SMART_RECORD_INTERVAL "smart-rec-interval"
+
+gboolean parse_source(NvDsSourceConfig *config, GKeyFile *key_file, gchar *group, gchar *cfg_file_path);
+gboolean parse_osd(NvDsOSDConfig *config, GKeyFile *key_file);
+gboolean parse_preprocess(NvDsPreProcessConfig *config, GKeyFile *key_file, gchar *group, gchar *cfg_file_path);
+gboolean parse_gie(NvDsGieConfig *config, GKeyFile *key_file, gchar *group, gchar *cfg_file_path);
+gboolean parse_tracker(NvDsTrackerConfig *config, GKeyFile *key_file, gchar *cfg_file_path);
+
+gboolean parse_sink(NvDsSinkSubBinConfig *config, GKeyFile *key_file, gchar *group, gchar *cfg_file_path);
+gboolean parse_tiled_display(NvDsTiledDisplayConfig *config, GKeyFile *key_file);
+gboolean parse_dsexample(NvDsDsExampleConfig *config, GKeyFile *key_file);
+gboolean parse_streammux(NvDsStreammuxConfig *config, GKeyFile *key_file, gchar *cfg_file_path);
+gboolean parse_msgconv(NvDsSinkMsgConvBrokerConfig *config, GKeyFile *key_file, gchar *group, gchar *cfg_file_path);
+
+gboolean parse_image_save(NvDsImageSave *config, GKeyFile *key_file, gchar *group, gchar *cfg_file_path);
+// Utility function to convert relative path in configuration file with absolute
+// path.
+gchar *get_absolute_file_path(gchar *cfg_file_path, gchar *file_path);
+
+/**
+ * Function to parse class label file. Parses the labels into a 2D-array of
+ * strings. Refer the SDK documentation for format of the labels file.
+ *
+ * @param[in] config pointer to @ref NvDsGieConfig
+ *
+ * @return true if file parsed successfully else returns false.
+ */
+gboolean parse_labels_file(NvDsGieConfig *config);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif

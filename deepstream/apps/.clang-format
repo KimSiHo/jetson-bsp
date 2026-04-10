@@ -1,0 +1,11 @@
+BasedOnStyle: LLVM
+
+UseTab: ForIndentation
+IndentWidth: 4
+TabWidth: 4
+ContinuationIndentWidth: 4
+
+ColumnLimit: 120
+
+SortIncludes: Never
+IncludeBlocks: Preserve

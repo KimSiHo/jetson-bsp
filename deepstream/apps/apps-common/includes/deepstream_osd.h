@@ -1,0 +1,51 @@
+#ifndef __NVGSTDS_OSD_H__
+#define __NVGSTDS_OSD_H__
+
+#include <gst/gst.h>
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "nvll_osd_struct.h"
+
+typedef struct {
+	GstElement *bin;
+	GstElement *queue;
+	GstElement *nvvidconv;
+	GstElement *conv_queue;
+	GstElement *cap_filter;
+	GstElement *nvosd;
+} NvDsOSDBin;
+
+typedef struct {
+	gboolean enable;
+	gboolean text_has_bg;
+	gboolean enable_clock;
+	gboolean draw_text;
+	gboolean draw_bbox;
+	gboolean draw_mask;
+	gint text_size;
+	gint border_width;
+	gint clock_text_size;
+	gint clock_x_offset;
+	gint clock_y_offset;
+	guint gpu_id;
+	guint nvbuf_memory_type; /* For nvvidconv */
+	guint num_out_buffers;
+	gchar *font;
+	gchar *hw_blend_color_attr;
+	NvOSD_Mode mode;
+	NvOSD_ColorParams clock_color;
+	NvOSD_ColorParams text_color;
+	NvOSD_ColorParams text_bg_color;
+} NvDsOSDConfig;
+
+// @ref CONFIG_GROUP_OSD
+gboolean create_osd_bin(NvDsOSDConfig *config, NvDsOSDBin *bin);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif

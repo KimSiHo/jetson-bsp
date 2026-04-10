@@ -1,0 +1,39 @@
+#ifndef _NVGSTDS_DSEXAMPLE_H_
+#define _NVGSTDS_DSEXAMPLE_H_
+
+#include <gst/gst.h>
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+typedef struct {
+	// Create a bin for the element only if enabled
+	gboolean enable;
+	// Struct members to store config / properties for the element
+	gboolean full_frame;
+	gint processing_width;
+	gint processing_height;
+	gboolean blur_objects;
+	guint unique_id;
+	guint gpu_id;
+	guint batch_size;
+	// For nvvidconv
+	guint nvbuf_memory_type;
+} NvDsDsExampleConfig;
+
+typedef struct {
+	GstElement *bin;
+	GstElement *queue;
+	GstElement *pre_conv;
+	GstElement *cap_filter;
+	GstElement *elem_dsexample;
+} NvDsDsExampleBin;
+
+gboolean create_dsexample_bin(NvDsDsExampleConfig *config, NvDsDsExampleBin *bin);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* _NVGSTDS_DSEXAMPLE_H_ */

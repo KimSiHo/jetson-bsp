@@ -1,0 +1,10 @@
+deepstream-7.1	7.1.0-1
+gstreamer1.0-libav:arm64	1.20.3-0ubuntu1
+gstreamer1.0-plugins-bad:arm64	1.20.3-0ubuntu1.1
+gstreamer1.0-plugins-good:arm64	1.20.3-0ubuntu1.6
+gstreamer1.0-plugins-ugly:arm64	1.20.1-1
+gstreamer1.0-tools	1.20.3-0ubuntu1.1
+libgstreamer1.0-0:arm64	1.20.3-0ubuntu1.1
+libgstrtspserver-1.0-0	1.20.1-1
+libjansson4:arm64	2.13.1-1.1build3
+libssl3:arm64	3.0.2-0ubuntu1.25

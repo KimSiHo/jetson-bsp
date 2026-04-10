@@ -1,0 +1,30 @@
+#!/bin/bash
+
+# 직접 실행(./setup-env.sh)하는 것을 방지 (반드시 source 또는 . 으로 실행하도록 유도)
+if [ "${BASH_SOURCE[0]}" -ef "$0" ]; then
+    echo "========= ERROR ========="
+    echo "이 스크립트는 직접 실행하면 안 됩니다. 반드시 'source' 명령어를 사용하세요:"
+    echo "Usage: source setup-env [dev]"
+    echo "========================="
+    exit 1
+fi
+
+export PHASE=${1:-dev}
+export ARCH=arm64
+
+# 사용자의 로컬 환경에 맞게 경로 설정 (이 부분만 각자 수정)
+export BASE_DIR=$(pwd)
+export SCRIPTS_DIR="$BASE_DIR/scripts"
+export L4T_DIR="$BASE_DIR/Linux_for_Tegra"
+export TOOLCHAIN="$HOME/bin/cross-toolchain/l4t-gcc/aarch64--glibc--stable-2022.08-1/bin/aarch64-buildroot-linux-gnu-"
+export CROSS_COMPILE=$TOOLCHAIN
+
+echo "=================================================="
+echo " Jetson BSP Build Environment Initialized"
+echo "=================================================="
+echo " BASE_DIR       : BASE_DIR"
+echo " L4T_DIR        : $L4T_DIR"
+echo " CROSS_COMPILE  : $CROSS_COMPILE"
+echo " PHASE          : $PHASE"
+echo " ARCH           : $ARCH"
+echo "=================================================="

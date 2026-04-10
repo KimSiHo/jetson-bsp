@@ -1,0 +1,7 @@
+Linux_for_Tegra/
+.idea/
+.vscode/
+sysroot/
+src/out/
+debug/
+rootfs-overlay/

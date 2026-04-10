@@ -1,0 +1,26 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Jetson Remote",
+            "type": "cppdbg",
+            "request": "launch",
+            "MIMode": "gdb",
+
+            "miDebuggerPath": "<PATH_TO_AARCH64_GDB>",
+            "program": "<PATH_TO_TARGET_BINARY>",
+            "cwd": "<PROJECT_WORKING_DIRECTORY>",
+
+            "miDebuggerServerAddress": "<JETSON_IP>:1234",
+
+            "stopAtEntry": true,
+            "launchCompleteCommand": "exec-continue",
+
+            "setupCommands": [
+                {
+                    "text": "-enable-pretty-printing"
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,8 @@
+#ifndef __NVGSTDS_APP_VERSION_H__
+#define __NVGSTDS_APP_VERSION_H__
+
+#define NVDS_APP_VERSION_MAJOR 7
+#define NVDS_APP_VERSION_MINOR 1
+#define NVDS_APP_VERSION_MICRO 0
+
+#endif

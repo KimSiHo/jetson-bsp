@@ -1,0 +1,4 @@
+alias gstl='gst-launch-1.0'
+alias gsti='gst-inspect-1.0'
+alias gstd='gst-discoverer-1.0'
+alias gstp='gst-play-1.0'

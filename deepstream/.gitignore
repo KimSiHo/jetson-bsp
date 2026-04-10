@@ -1,0 +1,8 @@
+**/*.engine
+**/*.o
+out/
+apps/deepstream-proximity-record-app/.vscode/
+!apps/deepstream-proximity-record-app/.vscode/
+apps/deepstream-proximity-record-app/.vscode/*
+!apps/deepstream-proximity-record-app/.vscode/launch.json.example
+*.mp4
